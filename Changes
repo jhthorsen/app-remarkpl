@@ -2,6 +2,7 @@ Revision history for perl distribution App-remarkpl
 
 0.03 Not Released
  - Fix remarkpl --print
+ - Fix cpanfile: Requires Mojolicious
 
 0.02 2015-11-12T22:10:32+0100
  - Will load the presentation from disk on each request
