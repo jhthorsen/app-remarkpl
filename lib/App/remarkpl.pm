@@ -2,7 +2,7 @@ package App::remarkpl;
 
 =head1 NAME
 
-App::remarkpl - Description
+App::remarkpl - Web based presentation tool
 
 =head1 VERSION
 
@@ -16,9 +16,6 @@ information about how to write slides.
 
 =head1 SYNOPSIS
 
-  # Start a slideshow and open it in your web browser
-  $ remarkpl slides.markdown --open
-
   # Start a slideshow server
   $ remarkpl slides.markdown
 
@@ -28,8 +25,9 @@ information about how to write slides.
   # Show an example presentation
   $ remarkpl example.markdown
   $ remarkpl example.markdown --print
-  use App::remarkpl;
-  my $obj = App::remarkpl->new;
+
+After starting the server, you can open your favorite (modern) browser
+at L<http://localhost:3000>.
 
 =cut
 

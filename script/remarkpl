@@ -5,8 +5,7 @@ my $presentation = shift @ARGV || $ENV{REMARK_PRESENTATION} || '';
 
 unless ($ENV{MOJO_APP_LOADER}) {
   unless ($presentation) {
-    print Mojo::Loader::data_section(__PACKAGE__, 'help.txt');
-    exit((@ARGV and !-e $ARGV[0]) ? 1 : 0);
+    exec perldoc => -tT => $INC{'App/remarkpl.pm'};
   }
   unless ($presentation eq 'example.markdown' or -r $presentation) {
     die qq(Cannot read presentation file "$presentation".\n);
@@ -50,29 +49,6 @@ __DATA__
   <script>var slideshow = remark.create();</script>
 </body>
 </html>
-@@ help.txt
-About
-
-  "remarkpl" is a webserver for showing remark powered presentations
-  locally. Have a look at https://github.com/gnab/remark/wiki for more
-  information about how to write slides.
-
-Usage
-
-  # Start a slideshow and open it in your web browser
-  $ remarkpl slides.markdown --open
-
-  # Start a slideshow server
-  $ remarkpl slides.markdown
-
-  # Start the server on a different listen address
-  $ remarkpl slides.markdown --listen http://*:5000
-
-  # Show an example presentation
-  $ remarkpl example.markdown
-  $ remarkpl example.markdown --print
-
-
 @@ example.markdown
 class: center, middle
 
