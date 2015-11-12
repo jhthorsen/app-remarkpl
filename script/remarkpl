@@ -4,22 +4,18 @@ use App::remarkpl;
 my $presentation = shift @ARGV || $ENV{REMARK_PRESENTATION} || '';
 
 unless ($ENV{MOJO_APP_LOADER}) {
-  unless ($presentation) {
-    exec perldoc => -tT => $INC{'App/remarkpl.pm'};
-  }
-  unless ($presentation eq 'example.markdown' or -r $presentation) {
-    die qq(Cannot read presentation file "$presentation".\n);
-  }
+  exec perldoc => -tT => $INC{'App/remarkpl.pm'} unless $presentation;
+  die qq(Cannot read presentation file "$presentation".\n) unless $presentation eq 'example.markdown' or -r $presentation;
   unshift @ARGV, 'daemon';
 }
-
-$presentation ||= 'example.markdown';
 
 require Cwd;
 app->renderer->paths([split /:/, ($ENV{REMARK_PUBLIC} // File::Spec->catdir(Cwd::getcwd(), 'templates'))]);
 app->static->paths([split /:/, ($ENV{REMARK_STATIC} // Cwd::getcwd())]);
-push @{app->static->paths}, Cwd::abs_path(File::Spec->catdir(File::Basename::dirname($INC{'App/remarkpl.pm'}), qw( remarkpl public )));
+push @{app->static->paths},
+  Cwd::abs_path(File::Spec->catdir(File::Basename::dirname($INC{'App/remarkpl.pm'}), qw( remarkpl public )));
 
+$presentation ||= 'example.markdown';
 app->defaults(title => $presentation);
 app->defaults(presentation => -e $presentation
   ? Mojo::Util::slurp($presentation)
@@ -37,7 +33,7 @@ __DATA__
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
+  <title>remark - <%= title %></title>
   <meta charset="utf-8">
   %= stylesheet '/fonts.css'
   %= stylesheet '/basic.css'

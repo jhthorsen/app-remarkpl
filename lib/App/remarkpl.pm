@@ -10,9 +10,11 @@ App::remarkpl - Web based presentation tool
 
 =head1 DESCRIPTION
 
-L<App::remarkpl> is is a webserver for showing remark powered presentations
-locally. Have a look at L<https://github.com/gnab/remark/wiki> for more
-information about how to write slides.
+L<App::remarkpl> is is a L<Mojolicious> based webserver for showing
+L<remark|http://remarkjs.com> powered presentations locally.
+
+Have a look at L<https://github.com/gnab/remark/wiki> for more information
+about how to write slides.
 
 =head1 SYNOPSIS
 
