@@ -46,7 +46,7 @@ __DATA__
 </body>
 </html>
 @@ example.markdown
-class: center, middle
+class: center, middle, inverse
 
 # remark presentation example
 
