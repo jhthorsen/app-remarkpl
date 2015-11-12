@@ -1,0 +1,89 @@
+#!/usr/bin/env perl
+use Mojolicious::Lite;
+use App::remarkpl;
+my $presentation = shift @ARGV || $ENV{REMARK_PRESENTATION} || '';
+
+unless ($ENV{MOJO_APP_LOADER}) {
+  unless ($presentation) {
+    print Mojo::Loader::data_section(__PACKAGE__, 'help.txt');
+    exit((@ARGV and !-e $ARGV[0]) ? 1 : 0);
+  }
+  unless ($presentation eq 'example.markdown' or -r $presentation) {
+    die qq(Cannot read presentation file "$presentation".\n);
+  }
+  unshift @ARGV, 'daemon';
+}
+
+$presentation ||= 'example.markdown';
+
+require Cwd;
+app->renderer->paths([split /:/, ($ENV{REMARK_PUBLIC} // File::Spec->catdir(Cwd::getcwd(), 'templates'))]);
+app->static->paths([split /:/, ($ENV{REMARK_STATIC} // Cwd::getcwd())]);
+push @{app->static->paths}, Cwd::abs_path(File::Spec->catdir(File::Basename::dirname($INC{'App/remarkpl.pm'}), qw( remarkpl public )));
+
+app->defaults(title => $presentation);
+app->defaults(presentation => -e $presentation
+  ? Mojo::Util::slurp($presentation)
+  : Mojo::Loader::data_section(__PACKAGE__, $presentation));
+
+app->log->info(qq(Looking for static files in ) . join ', ', @{app->static->paths});
+app->log->info(qq(Looking for templates in ) . join ', ',    @{app->renderer->paths});
+app->log->info(qq(Serving presentation "$presentation"));
+
+get '/' => 'index';
+app->start;
+
+__DATA__
+@@ index.html.ep
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  %= stylesheet '/fonts.css'
+  %= stylesheet '/basic.css'
+</head>
+<body>
+  <textarea id="source"><%= $presentation %></textarea>
+  %= javascript '/remark.min.js'
+  %= javascript '/custom.js'
+  <script>var slideshow = remark.create();</script>
+</body>
+</html>
+@@ help.txt
+About
+
+  "remarkpl" is a webserver for showing remark powered presentations
+  locally. Have a look at https://github.com/gnab/remark/wiki for more
+  information about how to write slides.
+
+Usage
+
+  # Start a slideshow and open it in your web browser
+  $ remarkpl slides.markdown --open
+
+  # Start a slideshow server
+  $ remarkpl slides.markdown
+
+  # Start the server on a different listen address
+  $ remarkpl slides.markdown --listen http://*:5000
+
+  # Show an example presentation
+  $ remarkpl example.markdown
+  $ remarkpl example.markdown --print
+
+
+@@ example.markdown
+class: center, middle
+
+# remark presentation example
+
+---
+
+# Agenda
+
+1. Introduction
+2. Deep-dive
+3. ...
+
+---
