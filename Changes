@@ -2,6 +2,7 @@ Revision history for perl distribution App-remarkpl
 
 0.03 Not Released
  - Markdown files need to be UTF-8
+ - Better readability for "inverse" styling
 
 0.03 2015-11-12T22:36:21+0100
  - Fix remarkpl --print
