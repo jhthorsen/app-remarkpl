@@ -1,5 +1,8 @@
 Revision history for perl distribution App-remarkpl
 
+0.02 Not Released
+ - Will load the presentation from disk on each request
+
 0.01 2015-11-12T21:38:21+0100
  - Add script/remarkpl
  - Add example.markdown
