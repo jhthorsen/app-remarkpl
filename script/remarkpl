@@ -21,6 +21,11 @@ app->defaults(presentation => -e $presentation
   ? Mojo::Util::slurp($presentation)
   : Mojo::Loader::data_section(__PACKAGE__, $presentation));
 
+if (grep {/^--print/} @ARGV) {
+  print app->defaults('presentation');
+  exit 0;
+}
+
 app->log->info(qq(Looking for static files in ) . join ', ', @{app->static->paths});
 app->log->info(qq(Looking for templates in ) . join ', ',    @{app->renderer->paths});
 app->log->info(qq(Serving presentation "$presentation"));
