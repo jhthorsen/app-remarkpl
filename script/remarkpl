@@ -19,7 +19,7 @@ $presentation ||= 'example.markdown';
 app->defaults(title => $presentation);
 
 if (grep {/^--print/} @ARGV) {
-  print app->defaults('presentation');
+  print read_presentation();
   exit 0;
 }
 
@@ -28,17 +28,14 @@ app->log->info(qq(Looking for templates in ) . join ', ',    @{app->renderer->pa
 app->log->info(qq(Serving presentation "$presentation"));
 
 get '/' => sub {
-  my $c = shift;
-
-  $c->render(
-    template     => 'index',
-    presentation => -e $presentation
-    ? Mojo::Util::slurp($presentation)
-    : Mojo::Loader::data_section(__PACKAGE__, $presentation)
-  );
+  shift->render(template => 'index', presentation => read_presentation());
 };
 
 app->start;
+
+sub read_presentation {
+  -e $presentation ? Mojo::Util::slurp($presentation) : Mojo::Loader::data_section(__PACKAGE__, $presentation);
+}
 
 __DATA__
 @@ index.html.ep
