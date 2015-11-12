@@ -1,6 +1,6 @@
 Revision history for perl distribution App-remarkpl
 
-0.02 Not Released
+0.02 2015-11-12T22:10:32+0100
  - Will load the presentation from disk on each request
 
 0.01 2015-11-12T21:38:21+0100
