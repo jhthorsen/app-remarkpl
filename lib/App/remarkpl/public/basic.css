@@ -1,6 +1,7 @@
 body { font-family: 'Droid Serif'; }
 a { color: #222; }
 h1, h2, h3 { font-family: 'Yanone Kaffeesatz'; font-weight: normal; }
+img { max-width: 100%; }
 .remark-slide-content {
   background: #f8f8f4;
   color: #111;

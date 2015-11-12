@@ -50,12 +50,45 @@ class: center, middle, inverse
 
 # remark presentation example
 
+"class" can be center, middle, bottom, left, center, right, inverse.
+
 ---
 
 # Agenda
 
 1. Introduction
 2. Deep-dive
-3. ...
+
+<img src="example.jpg" class="h400">
 
 ---
+
+# Code
+
+```perl
+my $foo = "Code formatting";
+```
+
+```
+.left[Left-aligned text]
+.center[Centered text]
+.right[Right-aligned text]
+```
+
+---
+class: contrast, inverse
+background-image: url(example.jpg)
+
+# Lists
+
+- Item 1
+
+- Item 2
+
+  With a paragraph
+
+---
+class: center, middle
+# The end
+
+[jhthorsen@cpan.org](mailto:jhthorsen@cpan.org)
