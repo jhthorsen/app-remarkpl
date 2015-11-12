@@ -6,7 +6,7 @@ App::remarkpl - Web based presentation tool
 
 =head1 VERSION
 
-0.02
+0.03
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ at L<http://localhost:3000>.
 
 use Mojo::Base -base;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 COPYRIGHT AND LICENSE
 
