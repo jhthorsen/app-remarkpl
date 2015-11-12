@@ -34,7 +34,10 @@ get '/' => sub {
 app->start;
 
 sub read_presentation {
-  -e $presentation ? Mojo::Util::slurp($presentation) : Mojo::Loader::data_section(__PACKAGE__, $presentation);
+  Mojo::Util::decode(
+    'UTF-8',
+    -e $presentation ? Mojo::Util::slurp($presentation) : Mojo::Loader::data_section(__PACKAGE__, $presentation)
+  );
 }
 
 __DATA__
