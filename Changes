@@ -1,5 +1,8 @@
 Revision history for perl distribution App-remarkpl
 
+0.05 Not Released
+ - Stopped using deprecated "slurp" function
+
 0.04 2015-11-13T00:28:06+0100
  - Markdown files need to be UTF-8
  - Better readability for "inverse" styling

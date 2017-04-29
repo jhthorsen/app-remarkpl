@@ -36,7 +36,7 @@ app->start;
 sub read_presentation {
   Mojo::Util::decode(
     'UTF-8',
-    -e $presentation ? Mojo::Util::slurp($presentation) : Mojo::Loader::data_section(__PACKAGE__, $presentation)
+    -e $presentation ? Mojo::File->new($presentation)->slurp : Mojo::Loader::data_section(__PACKAGE__, $presentation)
   );
 }
 
