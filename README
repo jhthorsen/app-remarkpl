@@ -2,7 +2,7 @@ NAME
     App::remarkpl - Web based presentation tool
 
 VERSION
-    0.04
+    0.05
 
 DESCRIPTION
     App::remarkpl is is a Mojolicious based webserver for showing remark

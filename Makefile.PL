@@ -6,7 +6,7 @@ WriteMakefile(
   LICENSE => 'artistic_2',
   ABSTRACT_FROM => 'lib/App/remarkpl.pm',
   VERSION_FROM => 'lib/App/remarkpl.pm',
-  EXE_FILES => [qw( script/remarkpl )],
+  EXE_FILES => [qw(script/remarkpl)],
   META_MERGE => {
     resources => {
       bugtracker => 'https://github.com/jhthorsen/app-remarkpl/issues',
@@ -22,5 +22,5 @@ WriteMakefile(
   'Mojolicious' => '6.00'
 }
 ,
-  test => { TESTS => 't/*.t' },
+  test => {TESTS => (-e 'META.yml' ? 't/*.t' : 't/*.t xt/*.t')},
 );
