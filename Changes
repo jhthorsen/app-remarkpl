@@ -1,8 +1,9 @@
 Revision history for perl distribution App-remarkpl
 
 0.06 Not Released
- - PWD is no longer in INC
+ - Updated remarkjs to the latest version
  - Bumped Mojolicious to 9.00
+ - PWD is no longer in INC
 
 0.05 2017-04-29T12:43:22+0200
  - Stopped using deprecated "slurp" function
