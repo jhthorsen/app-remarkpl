@@ -2,6 +2,7 @@ Revision history for perl distribution App-remarkpl
 
 0.06 Not Released
  - PWD is no longer in INC
+ - Bumped Mojolicious to 9.00
 
 0.05 2017-04-29T12:43:22+0200
  - Stopped using deprecated "slurp" function
