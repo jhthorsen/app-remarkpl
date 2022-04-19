@@ -1,4 +1,11 @@
 package App::remarkpl;
+use Mojo::Base -strict;
+
+our $VERSION = '0.05';
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -31,12 +38,6 @@ about how to write slides.
 After starting the server, you can open your favorite (modern) browser
 at L<http://localhost:3000>.
 
-=cut
-
-use Mojo::Base -base;
-
-our $VERSION = '0.05';
-
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 2014, Jan Henning Thorsen
@@ -49,5 +50,3 @@ the terms of the Artistic License version 2.0.
 Jan Henning Thorsen - C<jhthorsen@cpan.org>
 
 =cut
-
-1;
