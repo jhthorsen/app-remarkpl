@@ -38,6 +38,28 @@ about how to write slides.
 After starting the server, you can open your favorite (modern) browser
 at L<http://localhost:3000>.
 
+=head1 ENVIRONMENT VARIABLES
+
+=over 2
+
+=item * REMARK_JS
+
+Can be set to an external URL such as
+L<https://remarkjs.com/downloads/remark-latest.min.js> to use a different
+version than the bundled remarkjs version.
+
+=item * REMARK_STATIC
+
+Path to static files to include. Default value is the current working
+directory.
+
+=item * REMARK_TEMPLATES
+
+Path to custom Mojolicious templates. Default to C<./templates> in the current
+working directory.
+
+=back
+
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 2014, Jan Henning Thorsen

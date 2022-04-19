@@ -16,7 +16,7 @@ unless ($ENV{MOJO_APP_LOADER}) {
 }
 
 # Include static assets and templates
-app->renderer->paths([split /:/, ($ENV{REMARK_PUBLIC} // path('templates')->to_abs)]);
+app->renderer->paths([split /:/, ($ENV{REMARK_TEMPLATES} // path('templates')->to_abs)]);
 app->static->paths([split /:/, ($ENV{REMARK_STATIC} // path)]);
 push @{app->static->paths},
   path(path($INC{'App/remarkpl.pm'})->dirname, qw(remarkpl public))->to_abs;
@@ -30,7 +30,8 @@ app->log->info(qq(Serving presentation "$presentation"));
 
 get '/' => sub { shift->render(template => 'remarkpl', presentation => read_presentation()) };
 
-app->defaults(title => $presentation);
+app->defaults(remarkjs => $ENV{REMARK_JS} || '/remark.min.js');
+app->defaults(title    => $presentation);
 app->start;
 
 sub read_presentation {
@@ -52,7 +53,7 @@ __DATA__
 </head>
 <body>
   <textarea id="source"><%= $presentation %></textarea>
-  %= javascript '/remark.min.js'
+  %= javascript $remarkjs
   %= javascript '/custom.js'
   <script>const slideshow = remark.create();</script>
 </body>
