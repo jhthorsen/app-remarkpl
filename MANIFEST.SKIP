@@ -1,5 +1,5 @@
-#!start included /Users/jhthorsen/.plenv/versions/5.22.0/lib/perl5/5.22.0/ExtUtils/MANIFEST.SKIP
 # Avoid version control files.
+.pls_cache
 \bRCS\b
 \bCVS\b
 \bSCCS\b

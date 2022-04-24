@@ -1,7 +1,7 @@
 package App::remarkpl;
 use Mojo::Base -strict;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 1;
 
@@ -13,7 +13,7 @@ App::remarkpl - Web based presentation tool
 
 =head1 VERSION
 
-0.05
+0.06
 
 =head1 DESCRIPTION
 

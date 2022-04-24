@@ -1,6 +1,6 @@
 Revision history for perl distribution App-remarkpl
 
-0.06 Not Released
+0.06 2022-04-25T08:52:05+0900
  - Add support for REMARK_JS environment variable
  - Documented environment variables
  - Updated remarkjs to the latest version
