@@ -2,6 +2,8 @@ Revision history for perl distribution App-remarkpl
 
 0.07 Not Released
  - Add support for help, --help and -h
+ - Add support for custom.css
+ - Change static files and templates to be relative to presentation file
 
 0.06 2022-04-25T08:52:05+0900
  - Add support for REMARK_JS environment variable
