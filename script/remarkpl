@@ -9,7 +9,7 @@ use Mojo::File qw(path);
 # show the manual or an error message in case of an invalid file.
 my $presentation = shift @ARGV || $ENV{REMARK_PRESENTATION} || 'example.markdown';
 unless ($ENV{MOJO_APP_LOADER}) {
-  exec perldoc => -tT => $INC{'App/remarkpl.pm'} unless $presentation;
+  exec perldoc => -tT => $INC{'App/remarkpl.pm'} if $presentation =~ m!^-*(h|help|man)$!;
   die qq(Cannot read presentation file "$presentation".\n)
     unless $presentation eq 'example.markdown' or -r $presentation;
   unshift @ARGV, 'daemon';
